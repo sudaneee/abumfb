@@ -14,6 +14,8 @@ class GeneralInformation(models.Model):
     logo = models.ImageField(upload_to='pics', null=True)
     footer_logo = models.ImageField(upload_to='pics', null=True)
     address = models.CharField(max_length=500, null=True)
+    file1 = models.FileField(upload_to='files', null=True, blank=True)
+    file2 = models.FileField(upload_to='files', null=True, blank=True)
 
 
 

@@ -7,11 +7,94 @@
         <!-- Main Header-->
         {% include 'website/partials/header.html'%}
     
-    
+	
+	<!-- START PAGE BANNER AND BREADCRUMBS -->
+	<section id="page-banner">
+		<div class="single-page-title-area overlay" data-background="{{breadcumb.image.url}}">
+			<div class="auto-container">
+				<div class="row">
+					<div class="col-12 text-center">
+						<div class="single-page-title">
+							<h2>About Us</h2>
+							<p></p>
+						</div>
+					</div>
+				</div>
+				<!-- end row-->
+			</div>
+		</div>
+		<div class="single-page-title-area-bottom">
+			<div class="auto-container">
+				<div class="row">
+					<div class="col-12 text-center">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+							<li class="breadcrumb-item active">about us</li>
+						</ol>
+					</div>
+				</div>
+				<!-- end row-->
+			</div>
+		</div>
+	</section>
+	<!-- END PAGE BANNER AND BREADCRUMBS -->
     <!-- START ABOUT SECTION -->
     <section id="about" class="section-padding">
         <div class="container">
             <div class="row">
+				<div class="col-lg-12 col-md-12 col-12">
+					<div class="row">
+						<div class="col-12 text-left">
+							<div class="section-title-2">
+								<h3>About <span>Us</span></h3>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<!-- end section title -->
+							<div class="image-style-1 mb-4">
+								<div class="image-style-wrapper">
+									<div class="image-one"></div>
+									<div class="image-two">
+										<img src="{{md.image.url}}" class="img-fluid" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-lg-6 col-md-6 col-12">
+							<div class="promo-content">
+								<h4>Who we are?</h4>
+								<p class="text-justify">{{data.preamble |slice:979}}</p>
+								{% comment %} <a href="{% url 'construction' %}" class="btn-style btn-filled mt-3">Read More <i class="icofont icofont-caret-right"></i></a> {% endcomment %}
+								
+							</div>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-12">
+							<h2>Misson:</h2>
+							<p>
+								“Providing sustainable financial solutions while fulfilling the social mission”
+							</p>
+							
+						</div>
+						<div class="col-lg-6 col-md-6 col-12">
+							<h2>Vission:</h2>
+							<p>
+								To be the leading microfinance bank by creating innovative solutions in a sustainable manner, while adding value to all stakeholders.
+							</p>
+						</div>
+						<div class="col-12 text-center">
+							<h2>Core Values:</h2>
+							<p>
+								Professionalism, Integrity,Innovation, Customer Focus
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- end col -->
                 <div class="col-12 text-center">
                     <div class="section-title">
                         

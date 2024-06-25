@@ -80,16 +80,16 @@
 
 										<ul class="dropdown-menu">
 											{% for service in services %}
-											<li><a href="#">{{service.title}}</a></li>
+											<li><a href="{% url 'single-service' service.id %}">{{service.title}}</a></li>
 											
 											{% endfor %}
 										</ul>
 									</li>
 									<li><a href="{% url 'about' %}" class="nav-link">About</a></li>
 									<li><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
-									<li><a href="{% url 'construction' %}" class="nav-link">News</a></li>
-									<li><a href="{% url 'construction' %}" class="nav-link">Events</a></li>
-									<li><a href="{% url 'construction' %}" class="nav-link">Contact</a></li>
+									<li><a href="{% url 'blog' %}" class="nav-link">News</a></li>
+									{% comment %} <li><a href="{% url 'construction' %}" class="nav-link">Events</a></li> {% endcomment %}
+									<li><a href="{% url 'contact' %}" class="nav-link">Contact US</a></li>
 								</ul>
 							</nav>
 						</div>

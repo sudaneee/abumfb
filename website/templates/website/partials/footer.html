@@ -38,13 +38,11 @@
                         <!-- END SECTION TITLE -->
 						<div class="col-12 footer-widget-inner">
 							<ul class="quick-link-list">
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> Home Page</a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> Services </a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> About</a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> Gallery</a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> News </a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> Event </a></li>
-								<li><a href="{% url 'construction' %}"><i class="fa fa-chevron-circle-right"></i> Contact </a></li>
+								<li><a href="{% url 'home' %}"><i class="fa fa-chevron-circle-right"></i> Home Page</a></li>
+								<li><a href="{% url 'about' %}"><i class="fa fa-chevron-circle-right"></i> About</a></li>
+								<li><a href="{% url 'gallery' %}"><i class="fa fa-chevron-circle-right"></i> Gallery</a></li>
+								<li><a href="{% url 'blog' %}"><i class="fa fa-chevron-circle-right"></i> News </a></li>
+								<li><a href="{% url 'contact' %}"><i class="fa fa-chevron-circle-right"></i> Contact </a></li>
 							</ul>
 						</div>	
                     </div>
@@ -98,7 +96,8 @@
 								</div>
 								<div class="single-fcontact-des">
 									<h6>Door Open:</h6>
-									<p>Mon - Sun : 08:00 - 16:00</p>
+									<p>08:00am - 4:00pm</p>
+									<p>Please note, our branches opened to customers from Mon - Fri. Thank you.</p>
 								</div>
 							</div>
 						</div>
@@ -126,7 +125,7 @@
                         <ul>
                             <li><a href="{% url 'construction' %}">Company Profile</a> </li>
                             <li><a href="{% url 'construction' %}">Terms & Condition</a> </li>
-                            <li><a href="{% url 'construction' %}">Refund Policy</a> </li>
+                            <li><a href="{{data.file1.url}}" target="_blank">Web Policy</a> </li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 copyright-text text-center text-lg-right text-md-right">
