@@ -1,0 +1,104 @@
+{% load static %}
+    <!-- START HEADER SECTION -->
+	<header class="main-header header-1">
+		<!-- START TOP AREA -->
+		<div class="top-area">
+			<div class="auto-container">
+				<div class="row">
+					<div class="col-lg-8 col-md-12 col-sm-12 col-12">
+						<div class="info-menu">
+							<ul>
+								<li><a href="{% url 'construction' %}"><i class="icofont icofont-time"></i> Opening Hours - Mon to Fri: 8AM to 4PM</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- end col -->
+					<div class="col-lg-4 col-md-12 col-sm-12 col-12">
+						<div class="info-menu">
+						
+						</div>
+					</div> 
+					<!-- end col -->
+				</div>
+			</div>
+		</div>
+		<!-- END TOP AREA -->
+
+		<!-- START LOGO AREA -->
+		<div class="logo-area">
+			<div class="auto-container">
+				<div class="row">
+					<div class="col-lg-5 col-md-3 col-sm-6 col-7 mx-auto pl-0 mb-lg-0 mb-5">
+						<div class="logo">
+							<a href="index-2.html">
+							   <img class="img-fluid" src="{{data.logo.url}}" alt="">
+							</a>
+						</div>
+					</div>
+					<!-- end col -->
+					<div class="col-lg-7 col-md-12 col-sm-12 col-12">
+						<div class="header-info-box">
+                            <div class="header-info-icon">
+								<i class="fa fa-envelope-open"></i>
+							</div>
+							<p>Email Us</p>
+                            <h6>{{data.email}}</h6>
+                        </div>
+						<div class="header-info-box">
+                            <div class="header-info-icon">
+								<i class="icofont icofont-phone"></i>
+							</div>
+							<p>Call Us</p>
+                            <h6>{{data.phone_number}}</h6>
+                        </div>
+						<div class="header-info-box">
+                            <a href="{% url 'construction' %}" class="quote-btn">Get Started <i class="icofont icofont-caret-right"></i></a>
+                        </div>
+					</div>
+					<!-- end col -->
+				</div>
+			</div>
+		</div>
+		<!-- END LOGO AREA -->
+
+		<!-- START NAVIGATION AREA -->
+		<div class="sticky-menu">
+			<div class="mainmenu-area">
+				<div class="auto-container">
+					<div class="row">
+						<div class="col-lg-9 d-none d-lg-block d-md-none">
+							<nav class="navbar navbar-expand-lg justify-content-left">
+								<ul class="navbar-nav">
+									<li><a href="{% url 'home' %}" class="active nav-link">Home</a></li>
+									<li class="dropdown"><a href="blog.html" class="nav-link">Services</a>
+
+										<ul class="dropdown-menu">
+											{% for service in services %}
+											<li><a href="">{{service.title}}</a></li>
+											
+											{% endfor %}
+										</ul>
+									</li>
+									<li><a href="{% url 'about' %}" class="nav-link">About</a></li>
+									<li><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+									<li><a href="{% url 'blog' %}" class="nav-link">News</a></li>
+									{% comment %} <li><a href="{% url 'construction' %}" class="nav-link">Events</a></li> {% endcomment %}
+									<li><a href="{% url 'contact' %}" class="nav-link">Contact US</a></li>
+								</ul>
+							</nav>
+						</div>
+						<div class="col-lg-3 d-none d-lg-block d-md-none text-right pr-0">
+							<form class="navbar-form">
+								<div class="form-group">
+									<input class="form-control" name="search" value="Search here..." type="text">
+									<button type="submit" class="btn"><i class="fa fa-search-plus"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END NAVIGATION AREA -->	
+	</header>
+	<!-- END HEADER SECTION -->

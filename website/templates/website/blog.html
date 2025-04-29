@@ -1,0 +1,135 @@
+{% extends 'website/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Main Header-->
+{% include 'website/partials/header.html'%}
+
+<!-- START PAGE BANNER AND BREADCRUMBS -->
+<section id="page-banner">
+    <div class="single-page-title-area overlay" data-background="{{breadcumb.image.url}}">
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="single-page-title">
+                        <h2>News and Updates</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <!-- end row-->
+        </div>
+    </div>
+    <div class="single-page-title-area-bottom">
+        <div class="auto-container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item active">News</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- end row-->
+        </div>
+    </div>
+</section>
+<!-- END PAGE BANNER AND BREADCRUMBS -->
+
+<!-- START BLOG SECTION -->
+<section id="blog" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-12">
+
+                {% for blog in blogs %}
+                <div class="single-blog mb-5 wow fadeInUp animated">
+                    <div class="single-blog-slider owl-carousel owl-theme">
+                        <div class="single-blog-slider-item">
+                            <img class="img-fluid" src="{{blog.image.url}}" alt="">
+                        </div>
+                    </div>
+                    <div class="single-blog-dec">
+                        <a href="{% url 'single-blog' blog.id %}"><h4>{{blog.title}}</h4></a>
+                        <span class="post-date"><i class="icofont icofont-calendar"></i> {{blog.posted}}</span>
+                        <p>
+                            {{blog.content}}
+                            <a href="{% url 'single-blog' blog.id %}">[...]</a>
+                        </p>
+                        <div class="single-blog-admin">
+                            <div class="single-blog-admin-img">
+                                <img class="img-fluid rounded-circle" src="assets/img/team/person1.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end single blog -->
+                {% endfor %}
+
+                <div class="theme-pagination mb-lg-0 mb-md-0 mb-5">
+                    <div class="navbar justify-content-center">
+                        <ul class="pagination">
+                            {% if blogs.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ blogs.previous_page_number }}"><i class="icofont icofont-long-arrow-left"></i></a></li>
+                            {% endif %}
+                            {% for num in blogs.paginator.page_range %}
+                                {% if blogs.number == num %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% elif num > blogs.number|add:'-3' and num < blogs.number|add:'3' %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if blogs.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ blogs.next_page_number }}"><i class="icofont icofont-long-arrow-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- end blog pagination -->
+            </div>
+            <!-- end col -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-0 mb-5 pl-lg-5 pl-md-5 pl-sm-2 pl-2">
+                <div class="widget ser_wid mb-5">
+                    <div class="widget-inner">
+                        <form class="col-12 navbar-form">
+                            <div class="row">
+                                <div class="form-group col-lg-10 col-md-10 col-10 p-0">
+                                    <input class="form-control" name="search" value="Search here..." type="text">
+                                </div>
+                                <div class="form-group col-lg-2 col-md-2 col-2 p-0">
+                                    <button type="submit" class="btn"><i class="icofont icofont-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end widget -->
+                <div class="widget cat_wid mb-5">
+                    <h3 class="widget-title">Recent Post</h3>
+                    <!-- end widget tittle-->
+                    <div class="widget-inner mt-5">
+                        {% for blog in blogss %}
+                        <div class="blog-singleRecpost">
+                            <img src="{{blog.image.url}}" alt="" class="img-fluid">
+                            <h6 class="blog-recTitle">
+                                <a href="{% url 'single-blog' blog.id%}">{{blog.title}}.</a>
+                            </h6>
+                            <p class="posted-on">{{blog.posted}}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- end widget -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END BLOG SECTION -->
+
+<!--Main Footer-->
+{% include 'website/partials/footer.html' %}
+
+{% endblock content %}
