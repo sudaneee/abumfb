@@ -1,3 +1,7 @@
 myenv/
 media/
 db.sqlite
+
+# Python cache files
+__pycache__/
+*.pyc

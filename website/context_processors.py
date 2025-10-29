@@ -12,6 +12,7 @@ def data_processor(request):
     services = Service.objects.all().order_by('id')
     staff = Staff.objects.all()
     vid = Picture.objects.get(title="vid")
+    ndpr = Picture.objects.filter(title="NDPR").first()
     blogs = Blog.objects.all()
     footer = Picture.objects.get(title="footer")
     breadcumb = Picture.objects.get(title="breadcumb")
@@ -27,6 +28,7 @@ def data_processor(request):
       'services': services,
       'staff': staff,
       'vid': vid,
+      'ndpr': ndpr,
       'blogs': blogs,
       'footer': footer,
       'breadcumb': breadcumb
