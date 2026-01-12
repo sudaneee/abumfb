@@ -141,7 +141,8 @@ ZAINPAY_BASE_URL = "https://api.zainpay.ng"  # or live URL
 # ZAINPAY_SECRET_KEY = "sAszdJctnoAAFHfQKjv28axsX8KWkVqaXHzxGBo4tO0Ca"
 # ZAINPAY_PUBLIC_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3phaW5wYXkubmciLCJpYXQiOjE3NjIwODMxMzQsImlkIjo2NDllYjQxZS1kYmZhLTRkM2UtODkzNi1lYTBiODg2NWY5YjgsIm5hbWUiOmF1c21hbjIxQGdtYWlsLmNvbSwicm9sZSI6YXVzbWFuMjFAZ21haWwuY29tLCJzZWNyZXRLZXkiOnNBc3pkSmN0bm9BQUZIZlFLanYyOGF4c1g4S1drVnFhWEh6eEdCbzR0TzBDYX0._Y6AvcbIpazInNFILAZiP5YSGADXtOg6CcQLfZCcYmk"
 
-BASE_URL = "https://unreformed-hysteroid-telma.ngrok-free.dev"
+BASE_URL = "https://abumfbank.com.ng"
+# BASE_URL = "https://unreformed-hysteroid-telma.ngrok-free.dev"
 ZAINPAY_CALLBACK_URL = f"{BASE_URL}/payments/callback/"
 
 
