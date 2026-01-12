@@ -18,6 +18,8 @@ def initialize_payment(payment, amount_override=None):
     headers = {
         "Authorization": f"Bearer {settings.ZAINPAY_PUBLIC_KEY}",
         "Content-Type": "application/json",
+        "Accept": "application/json",       
+
 
     }
 
