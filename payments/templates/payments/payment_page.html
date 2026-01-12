@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABUMFBANK Payment Portal</title>
+    <style>
+        :root {
+            --primary-dark: #0B3D2E;
+            --primary-maroon: #6B1E1E;
+            --light-bg: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --border-color: #E1E5E9;
+            --text-primary: #1A2A3A;
+            --text-secondary: #5A6C7D;
+            --success: #0B3D2E;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(11, 61, 46, 0.08);
+            --shadow-hover: 0 8px 24px rgba(11, 61, 46, 0.12);
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .payment-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .bank-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .bank-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .bank-logo::before {
+            content: '🏦';
+            font-size: 32px;
+        }
+
+        .bank-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .bank-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary-dark), #1A5C48);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        .secure-badge::before {
+            content: '🔒';
+            font-size: 14px;
+        }
+
+        .payment-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            transition: var(--transition);
+        }
+
+        .payment-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-section {
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title::before {
+            content: '✓';
+            background: var(--primary-dark);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .required::after {
+            content: ' *';
+            color: var(--primary-maroon);
+        }
+
+        select, input {
+            padding: 14px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: white;
+            width: 100%;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 0 3px rgba(11, 61, 46, 0.1);
+        }
+
+        select:hover, input:hover {
+            border-color: #B0B9C2;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 32px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 12px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-dark);
+            background: rgba(11, 61, 46, 0.02);
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-dark);
+        }
+
+        .payment-method-icon {
+            font-size: 20px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, var(--primary-dark), #1A5C48);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #0A3528, #164B3A);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(11, 61, 46, 0.2);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .form-note a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-note a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+
+        .loading::after {
+            content: ' ⏳';
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                margin: 20px auto;
+            }
+
+            .payment-card {
+                padding: 24px;
+            }
+
+            .bank-name {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        .field-hint {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <header class="bank-header">
+            <div class="bank-logo">
+                <h1 class="bank-name">ABUMFBANK</h1>
+            </div>
+            <p class="bank-subtitle">Secure Payment Portal</p>
+            <div class="secure-badge">256-bit SSL Encrypted</div>
+        </header>
+
+        <main class="payment-card">
+            <form method="post" action="{% url 'payments:submit_payment' %}" id="payment-form">
+                {% csrf_token %}
+
+                <div class="form-section">
+                    <h3 class="section-title">Payment Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="merchant" class="required">Merchant</label>
+                            <select name="merchant" id="merchant" required>
+                                <option value="">Select Merchant</option>
+                                {% for m in merchants %}
+                                    <option value="{{ m.id }}">{{ m.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product" class="required">Product</label>
+                            <select name="product" id="product" required>
+                                <option value="">Select Product</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="dynamic-fields"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Payer Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="payer_name" class="required">Full Name</label>
+                            <input type="text" name="payer_name" id="payer_name" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="payer_email" class="required">Email Address</label>
+                            <input type="email" name="payer_email" id="payer_email" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="payer_phone">Phone Number</label>
+                            <input type="tel" name="payer_phone" id="payer_phone" placeholder="+1 (234) 567-8900">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="amount-field" style="display:none;">
+                    <div class="form-group">
+                        <label for="amount" class="required">Payment Amount</label>
+                        <input type="number" step="0.01" name="amount" id="amount" placeholder="0.00" min="0">
+                        <div class="field-hint">Enter the amount you wish to pay</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Payment Method</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="payment_method" value="CARD" required>
+                            <span class="payment-method-icon">💳</span>
+                            <span>Credit/Debit Card</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="payment_method" value="TRANSFER" required>
+                            <span class="payment-method-icon">🏦</span>
+                            <span>Bank Transfer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="loading" id="form-loading">Processing</div>
+
+                <button type="submit" class="submit-button">Proceed to Secure Payment</button>
+
+                <p class="form-note">
+                    Your payment is secured with bank-grade encryption. 
+                    <a href="#">View our security policy</a>
+                </p>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        const merchantSelect = document.getElementById("merchant");
+        const productSelect = document.getElementById("product");
+        const fieldsContainer = document.getElementById("dynamic-fields");
+        const amountField = document.getElementById("amount-field");
+        const form = document.getElementById("payment-form");
+        const loadingIndicator = document.getElementById("form-loading");
+
+        merchantSelect.addEventListener("change", function () {
+            productSelect.innerHTML = "";
+            fieldsContainer.innerHTML = "";
+            amountField.style.display = "none";
+            loadingIndicator.style.display = "block";
+
+            fetch(`/payments/ajax/products/${this.value}/`)
+                .then(res => res.json())
+                .then(data => {
+                    productSelect.innerHTML = `<option value="">Select Product</option>`;
+                    data.forEach(p => {
+                        productSelect.innerHTML += `<option value="${p.id}" data-type="${p.amount_type}">${p.name}</option>`;
+                    });
+                    loadingIndicator.style.display = "none";
+                })
+                .catch(() => {
+                    loadingIndicator.style.display = "none";
+                });
+        });
+
+        productSelect.addEventListener("change", function () {
+            fieldsContainer.innerHTML = "";
+            const selectedOption = this.options[this.selectedIndex];
+            const amountType = selectedOption ? selectedOption.dataset.type : "";
+            amountField.style.display = amountType === "VARIABLE" ? "block" : "none";
+            loadingIndicator.style.display = "block";
+
+            fetch(`/payments/ajax/fields/${this.value}/`)
+                .then(res => res.json())
+                .then(fields => {
+                    fields.forEach(f => {
+                        let input = "";
+                        let fieldHtml = `<div class="form-group">`;
+
+                        if (f.type === "SELECT") {
+                            input = `<select name="${f.key}" class="form-select">
+                                ${f.options.map(o => `<option value="${o}">${o}</option>`).join("")}
+                            </select>`;
+                        } else {
+                            input = `<input type="${f.type.toLowerCase()}" name="${f.key}" placeholder="${f.label}">`;
+                        }
+
+                        fieldHtml += `<label>${f.label}</label>${input}</div>`;
+                        fieldsContainer.innerHTML += fieldHtml;
+                    });
+                    loadingIndicator.style.display = "none";
+                })
+                .catch(() => {
+                    loadingIndicator.style.display = "none";
+                });
+        });
+
+        form.addEventListener("submit", function() {
+            loadingIndicator.style.display = "block";
+            this.querySelector('.submit-button').disabled = true;
+        });
+    </script>
+</body>
+</html>

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,27 @@ testing = "My Test"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+ZAINPAY_SECRET_KEY = os.getenv("ZAINPAY_SECRET_KEY")
+ZAINPAY_PUBLIC_KEY = os.getenv("ZAINPAY_PUBLIC_KEY")
+ZAINPAY_BASE_URL = "https://api.zainpay.ng"  # or live URL
+# ZAINPAY_SECRET_KEY = "sAszdJctnoAAFHfQKjv28axsX8KWkVqaXHzxGBo4tO0Ca"
+# ZAINPAY_PUBLIC_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3phaW5wYXkubmciLCJpYXQiOjE3NjIwODMxMzQsImlkIjo2NDllYjQxZS1kYmZhLTRkM2UtODkzNi1lYTBiODg2NWY5YjgsIm5hbWUiOmF1c21hbjIxQGdtYWlsLmNvbSwicm9sZSI6YXVzbWFuMjFAZ21haWwuY29tLCJzZWNyZXRLZXkiOnNBc3pkSmN0bm9BQUZIZlFLanYyOGF4c1g4S1drVnFhWEh6eEdCbzR0TzBDYX0._Y6AvcbIpazInNFILAZiP5YSGADXtOg6CcQLfZCcYmk"
+
+BASE_URL = "https://unreformed-hysteroid-telma.ngrok-free.dev"
+ZAINPAY_CALLBACK_URL = f"{BASE_URL}/payments/callback/"
+
+
+
+
+
+
+# ZAINPAY_BASE_URL = "https://sandbox.zainpay.ng"  # or live URL
+# ZAINPAY_SECRET_KEY = "36j7N7tfRV8owtDxxP0ogloF5142bvwjhGbfWWYtcq2lA"
+# ZAINPAY_PUBLIC_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3phaW5wYXkubmciLCJpYXQiOjE3NjIwNjg4NzIsImlkIjphMzVlZGRjMC1kNTUxLTRjYjUtOGU0Ni1iZjM0YzRkMTZjZDEsIm5hbWUiOmF1c21hbjIxQGdtYWlsLmNvbSwicm9sZSI6YXVzbWFuMjFAZ21haWwuY29tLCJzZWNyZXRLZXkiOjM2ajdON3RmUlY4b3d0RHh4UDBvZ2xvRjUxNDJidndqaEdiZldXWXRjcTJsQX0.2nD75mPOvYHcYNFeV2A9-yllrjdmowtTCoL14Bb_08Q"
+
+# BASE_URL = "https://unreformed-hysteroid-telma.ngrok-free.dev"
+# ZAINPAY_CALLBACK_URL = f"{BASE_URL}/payments/callback/"
+

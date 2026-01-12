@@ -2,6 +2,7 @@ myenv/
 media/
 db.sqlite
 db.sqlite3
+.env
 
 # Python cache files
 __pycache__/
