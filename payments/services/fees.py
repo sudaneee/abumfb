@@ -8,7 +8,7 @@ def calculate_fees(amount, payment_method):
 
     if payment_method == "TRANSFER":
         if amount <= 5000:
-            fee = Decimal("50.00")
+            fee = Decimal("350.00")
         else:
             fee = Decimal("550.00")
 
